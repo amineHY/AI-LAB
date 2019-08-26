@@ -11,10 +11,15 @@
 	- Most used AI framework: TensorRT, TensorFlow, PyTorch, ONNX, Keras and more.
 
 
+
+
 ## Run docker image
+First, you must have `docker-ce` installed on your machine to be able to use the pre-configured development environment.
+To do that, simply follow the steps to install [docker for Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/), or select the suitable version depending on your OS.
 
-Enter the following command in the terminal:
+Run the AI-lab docker image by typing in the terminal:
 
+``` bash
 	xhost +
 
 	docker run -it --rm -v $(pwd):/workspace \
@@ -22,7 +27,7 @@ Enter the following command in the terminal:
 	 -v /tmp/.X11-unix:/tmp/.X11-unix \
 	 -e DISPLAY=$DISPLAY \
 	 -p 8888:8888 aminehy/ai-lab:latest
-
+```
 
 ## Launch Jupyter notebook
 
