@@ -44,6 +44,7 @@ RUN apt-get -qq update && apt-get -qq install -y --no-install-recommends \
 	libhdf5-dev \
 	libcurl4-openssl-dev\
 	libprotoc-dev \
+	swig\
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN cd /usr/local/bin &&\
@@ -122,19 +123,20 @@ RUN pip3 install onnx onnxmltools onnxruntime-gpu
 RUN pip3 install keras
 
 #---------------Install ONNX-TensorRT---------------
-
-# RUN	git clone --recursive https://github.com/onnx/onnx-tensorrt.git &&\
-# 	cd onnx-tensorrt &&\
-# 	mkdir build  &&\
-# 	cd build &&\
-# 	cmake .. -DTENSORRT_ROOT=/usr/local/cuda-10.1/targets/x86_64-linux/include/ &&\
-# 	make -j8 &&\
-# 	make install &&\
-# 	ldconfig && \
-# 	cd .. && \
-# 	python setup.py build &&\
-# 	python setup.py install &&\
-# 	rm -rf ./build/
+# determine DGPU_ARCHS from https://developer.nvidia.com/cuda-gpus
+# https://github.com/onnx/onnx-tensorrt
+RUN	git clone --recursive https://github.com/onnx/onnx-tensorrt.git &&\
+ 	cd onnx-tensorrt &&\
+ 	mkdir build  &&\
+ 	cd build &&\
+        cmake .. -DCUDA_INCLUDE_DIRS=/usr/local/cuda/include -DTENSORRT_ROOT=/usr/src/tensorrt -DGPU_ARCHS="30" \
+ 	make -j8 &&\
+ 	make install &&\
+ 	ldconfig && \
+ 	cd .. && \
+ 	python setup.py build &&\
+	python setup.py install &&\
+ 	rm -rf ./build/
 
 
 #----------------Perform some cleaning-----------------------
