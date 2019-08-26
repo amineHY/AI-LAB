@@ -129,7 +129,7 @@ RUN	git clone --recursive https://github.com/onnx/onnx-tensorrt.git &&\
  	cd onnx-tensorrt &&\
  	mkdir build  &&\
  	cd build &&\
-        cmake .. -DCUDA_INCLUDE_DIRS=/usr/local/cuda/include -DTENSORRT_ROOT=/usr/src/tensorrt -DGPU_ARCHS="30" \
+        cmake .. -DCUDA_INCLUDE_DIRS=/usr/local/cuda/include -DTENSORRT_ROOT=/usr/src/tensorrt -DGPU_ARCHS="30" &&\
  	make -j8 &&\
  	make install &&\
  	ldconfig && \
