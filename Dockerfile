@@ -92,7 +92,7 @@ RUN wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
  	-DBUILD_TESTS=OFF \
  	-DBUILD_PERF_TESTS=OFF \
  	-DCMAKE_BUILD_TYPE=RELEASE \
- 	-DCMAKE_INSTALL_PREFIX=$(python3.5 -c "import sys; print(sys.prefix)") \
+ 	-DCMAKE_INSTALL_PREFIX=$(python3.6 -c "import sys; print(sys.prefix)") \
  	-DPYTHON_EXECUTABLE=$(which python3.6) \
  	-DPYTHON_INCLUDE_DIR=$(python3.6 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
  	-DPYTHON_PACKAGES_PATH=$(python3.6 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") \
