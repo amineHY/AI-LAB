@@ -74,35 +74,35 @@ RUN pip3 install --requirement /tmp/requirements.txt
 
 #---------------Install opencv----------------------
 
-# WORKDIR /
-# ENV OPENCV_VERSION="3.4.7"
-# RUN wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
-# 	&& unzip ${OPENCV_VERSION}.zip \
-# 	&& mkdir /opencv-${OPENCV_VERSION}/cmake_binary \
-# 	&& cd /opencv-${OPENCV_VERSION}/cmake_binary \
-# 	&& cmake -DBUILD_TIFF=ON \
-# 	-DBUILD_opencv_java=OFF \
-# 	-DWITH_CUDA=OFF \
-# 	-DWITH_OPENGL=ON \
-# 	-DWITH_OPENCL=ON \
-# 	-DWITH_IPP=ON \
-# 	-DWITH_TBB=ON \
-# 	-DWITH_EIGEN=ON \
-# 	-DWITH_V4L=ON \
-# 	-DBUILD_TESTS=OFF \
-# 	-DBUILD_PERF_TESTS=OFF \
-# 	-DCMAKE_BUILD_TYPE=RELEASE \
-# 	-DCMAKE_INSTALL_PREFIX=$(python3.5 -c "import sys; print(sys.prefix)") \
-# 	-DPYTHON_EXECUTABLE=$(which python3.5) \
-# 	-DPYTHON_INCLUDE_DIR=$(python3.5 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
-# 	-DPYTHON_PACKAGES_PATH=$(python3.5 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") \
-# 	.. \
-# 	&& make install \
-# 	&& rm /${OPENCV_VERSION}.zip \
-# 	&& rm -r /opencv-${OPENCV_VERSION}
-# RUN  ln -s \
-# 	/usr/lib/python3.5/dist-packages/cv2/python-3.5/cv2.cpython-35m-x86_64-linux-gnu.so \
-# 	/usr/local/lib/python3.5/dist-packages/cv2.so
+WORKDIR /
+ENV OPENCV_VERSION="4.1.0"
+RUN wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
+ 	&& unzip ${OPENCV_VERSION}.zip \
+ 	&& mkdir /opencv-${OPENCV_VERSION}/cmake_binary \
+ 	&& cd /opencv-${OPENCV_VERSION}/cmake_binary \
+ 	&& cmake -DBUILD_TIFF=ON \
+ 	-DBUILD_opencv_java=OFF \
+ 	-DWITH_CUDA=OFF \
+ 	-DWITH_OPENGL=ON \
+ 	-DWITH_OPENCL=ON \
+ 	-DWITH_IPP=ON \
+ 	-DWITH_TBB=ON \
+ 	-DWITH_EIGEN=ON \
+ 	-DWITH_V4L=ON \
+ 	-DBUILD_TESTS=OFF \
+ 	-DBUILD_PERF_TESTS=OFF \
+ 	-DCMAKE_BUILD_TYPE=RELEASE \
+ 	-DCMAKE_INSTALL_PREFIX=$(python3.5 -c "import sys; print(sys.prefix)") \
+ 	-DPYTHON_EXECUTABLE=$(which python3.6) \
+ 	-DPYTHON_INCLUDE_DIR=$(python3.6 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
+ 	-DPYTHON_PACKAGES_PATH=$(python3.6 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") \
+ 	.. \
+	&& make install \
+ 	&& rm /${OPENCV_VERSION}.zip \
+ 	&& rm -r /opencv-${OPENCV_VERSION}
+RUN  ln -s \
+	/usr/lib/python3.6/dist-packages/cv2/python-3.6/cv2.cpython-36m-x86_64-linux-gnu.so \
+	/usr/local/lib/python3.6/dist-packages/cv2.so
 
 
 ####################################################
@@ -116,7 +116,7 @@ RUN pip3 install torch==1.2.0+cu92 torchvision==0.4.0+cu92 -f https://download.p
 RUN pip3 install tensorflow-gpu
 
 #---------------Install ONNX------------------------
-RUN pip3 install onnx onnxmltools onnxruntime
+RUN pip3 install onnx onnxmltools onnxruntime-gpu
 
 #---------------Install keras------------------------
 RUN pip3 install keras
@@ -146,4 +146,4 @@ RUN (apt-get -qq autoremove -y; \
 WORKDIR /workspace
 
 
-# CMD ["jupyter", "notebook", "--allow-root", "--port=8888", "--ip=0.0.0.0", "--no-browser"]
+CMD ["jupyter", "notebook", "--allow-root", "--port=8888", "--ip=0.0.0.0", "--no-browser"]
