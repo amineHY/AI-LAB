@@ -21,7 +21,7 @@ Enter the following command in the terminal:
 	 --runtime=nvidia -w /workspace \
 	 -v /tmp/.X11-unix:/tmp/.X11-unix \
 	 -e DISPLAY=$DISPLAY \
-	 -p 8888:8888 aminehy/AI-lab:v1
+	 -p 8888:8888 aminehy/ai-lab:latest
 
 
 ## Launch Jupyter notebook
