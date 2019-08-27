@@ -11,6 +11,8 @@
 
 <!-- /TOC -->
 
+![All in one solution for data science](AI-lab_logos.png)
+
 ## Description
 This project is reserved for creating a new development environment using docker for exporting AI models in data science, and specially, computer vision. 
 
