@@ -7,7 +7,7 @@
 	- [Start developing](#start-developing)
 		- [Jupyter notebook](#jupyter-notebook)
 		- [VS Code](#vs-code)
-	- [Do you any suggestions ?](#do-you-any-suggestions-)
+	- [Do you have any suggestions ?](#do-you-have-any-suggestions-)
 
 <!-- /TOC -->
 
@@ -69,7 +69,7 @@ First, you must have `docker-ce` installed on your machine to be able to use the
 
 ## Start developing 
 ### Jupyter notebook
-If AI-lab runs correcly on your machine then `Jupyter notebook` should run automatically. If this is not the case, launch it from the terminal with this command
+If AI-lab runs correctly on your machine then `Jupyter notebook` should run automatically. If this is not the case, launch it from the terminal with this command
 
 ```bash 
 jupyter notebook --allow-root --port=8888 --ip=0.0.0.0 --no-browser
