@@ -21,7 +21,7 @@ This project is reserved for creating a new development environment using docker
 
 I hand-crafted AI-lab to take advantage of docker capability to have a reproducible and portable development environment. It allows you developing your artificial intelligence based computer vision application in Python using the most used artificial intelligence frameworks.
 
-AI-lab is meant to be used to build, train, validate and test your deep learning models.
+AI-lab is meant to be used to building, training, validating, testing your deep learning models. It is a a good tool to do transfer learning.
 
 	- Ubuntu 18.04
 	- NVIDIA CUDA 10.1
