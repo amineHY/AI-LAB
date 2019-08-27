@@ -1,4 +1,5 @@
-# AI-lab: The ideal development environment for Data Scientists to develop algorithm based on machine learning, artificial intelligence, Computer Vision...
+# AI-lab: The ideal development environment for Data Scientists to develop and export machine learning model for production
+
 
 ![All in one solution for data science](AI-lab_logos.png)
 
@@ -20,7 +21,7 @@ This project is reserved for creating a new development environment using docker
 
 I hand-crafted AI-lab to take advantage of docker capability to have a reproducible and portable development environment. It allows you developing your artificial intelligence based computer vision application in Python using the most used artificial intelligence frameworks.
 
-AI-lab is meant to be used to build, train, validate and test your deep learning models.
+AI-lab is meant to be used to building, training, validating, testing your deep learning models. It is a a good tool to do transfer learning.
 
 	- Ubuntu 18.04
 	- NVIDIA CUDA 10.1
@@ -80,7 +81,27 @@ jupyter notebook --allow-root --port=8888 --ip=0.0.0.0 --no-browser
 ```
 ### VS Code
 
-coming soon
+
+[VS Code](https://code.visualstudio.com/) offers the possibily to develop from inside AI-lab through the extension [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack).
+
+Read more in details [here](https://code.visualstudio.com/docs/remote/containers).
+
+In practice:
+* Create a folder named `.devcontainer` to your application folder
+```bash
+	cd /path/to/folder/application
+	mkdir .devcontainer && cd .devcontaier
+```
+* Copy all files of this repository to `.devcontainer`
+
+``` bash
+	git clone https://gitlab.com/aminehy/ai-lab.git
+	mv ai-lab/ /path/to/folder/application/.devcontainer
+```
+
+* Once your launch `VS Code` from the application folder containing the `.devcontainer` folder, `VS Code` detect automatically the remote development configuration and will ask you to `Reopen in container` click and your are all setup.
+
+
 
 
 ## Do you have any suggestions ?
