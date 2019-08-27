@@ -30,14 +30,14 @@ AI-lab is meant to be used to build, train, validate and test your deep learning
       	- ONNX
       	- Keras
       	- ONNX-TensorRT
-	- Jupyter-lab
-	- VS Code integration with remote development
-	- numpy
-	- matplotlib 
-	- scikit-learn 
-	- scipy
-	- pandas
-	- and more
+    	- Jupyter-lab
+    	- VS Code integration with remote development
+    	- numpy
+    	- matplotlib 
+    	- scikit-learn 
+    	- scipy
+    	- pandas
+    	- and more
 	
 ## Install AI-lab
 First, you must have `docker-ce` installed on your machine to be able to use the pre-configured development environment. To do that, simply follow the steps to install [docker for Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/), or select the suitable version depending on your OS.
