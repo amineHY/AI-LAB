@@ -74,7 +74,7 @@ jupyter notebook --allow-root --port=8888 --ip=0.0.0.0 --no-browser
 coming soon
 
 
-## Do you any suggestions ?
+## Do you have any suggestions ?
 
 Please contact me and let me know.
 LinkedIn - https://www.linkedin.com/in/aminehy/
