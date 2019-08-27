@@ -99,7 +99,7 @@ In practice:
 	mv ai-lab/ /path/to/folder/application/.devcontainer
 ```
 
-* Once your launch `VS Code` from the application folder containing the `.devcontainer` folder, `VS Code` detect automatically the remote development configuration and will ask you to `Reopen in container` click and your are all setup.
+* Once you launch `VS Code` from the application folder containing the `.devcontainer` folder, `VS Code` detect automatically the remote development configuration and will ask you to `Reopen in container` click and your are all setup.
 
 
 
