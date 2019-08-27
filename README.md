@@ -1,11 +1,11 @@
-# AI-lab: The ideal development environment for Data Scientists to develop algorithm based on machine learning,artificial intelligence, Computer Vision...
+# AI-lab: The ideal development environment for Data Scientists to develop algorithm based on machine learning, artificial intelligence, Computer Vision...
 
 ![All in one solution for data science](AI-lab_logos.png)
 
 
 <!-- TOC -->
 
-- [AI-lab: The ideal development environment for Data Scientists to develop algorithm based on machine learning,artificial intelligence, Computer Vision...](#ai-lab-the-ideal-development-environment-for-data-scientists-to-develop-algorithm-based-on-machine-learningartificial-intelligence-computer-vision)
+- [AI-lab: The ideal development environment for Data Scientists to develop algorithm based on machine learning, artificial intelligence, Computer Vision...](#ai-lab-the-ideal-development-environment-for-data-scientists-to-develop-algorithm-based-on-machine-learning-artificial-intelligence-computer-vision)
 	- [Description](#description)
 	- [Install AI-lab](#install-ai-lab)
 	- [Start developing](#start-developing)
