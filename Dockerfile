@@ -1,5 +1,8 @@
 FROM nvcr.io/nvidia/tensorrt:19.07-py3
 LABEL maintainer "M. Amine Hadj-Youcef  <hadjyoucef.amine@gmail.com>"
+
+# Connect with me: LinkedIn - https://www.linkedin.com/in/aminehy/
+
 ARG DEBIAN_FRONTEND=noninteractive
 
 
@@ -63,10 +66,6 @@ RUN cd /usr/local/src \
 RUN pip3 install --upgrade pip
 
 
-#---------------Install python dependencies---------
-# RUN /opt/tensorrt/python/python_setup.sh
-
-
 #---------------Install python requirements---------
 COPY requirements.txt /tmp/
 RUN pip3 install --requirement /tmp/requirements.txt
@@ -78,29 +77,29 @@ RUN pip3 install --requirement /tmp/requirements.txt
 WORKDIR /
 ENV OPENCV_VERSION="4.1.0"
 RUN wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
- 	&& unzip ${OPENCV_VERSION}.zip \
- 	&& mkdir /opencv-${OPENCV_VERSION}/cmake_binary \
- 	&& cd /opencv-${OPENCV_VERSION}/cmake_binary \
- 	&& cmake -DBUILD_TIFF=ON \
- 	-DBUILD_opencv_java=OFF \
- 	-DWITH_CUDA=OFF \
- 	-DWITH_OPENGL=ON \
- 	-DWITH_OPENCL=ON \
- 	-DWITH_IPP=ON \
- 	-DWITH_TBB=ON \
- 	-DWITH_EIGEN=ON \
- 	-DWITH_V4L=ON \
- 	-DBUILD_TESTS=OFF \
- 	-DBUILD_PERF_TESTS=OFF \
- 	-DCMAKE_BUILD_TYPE=RELEASE \
- 	-DCMAKE_INSTALL_PREFIX=$(python3.6 -c "import sys; print(sys.prefix)") \
- 	-DPYTHON_EXECUTABLE=$(which python3.6) \
- 	-DPYTHON_INCLUDE_DIR=$(python3.6 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
- 	-DPYTHON_PACKAGES_PATH=$(python3.6 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") \
- 	.. \
+	&& unzip ${OPENCV_VERSION}.zip \
+	&& mkdir /opencv-${OPENCV_VERSION}/cmake_binary \
+	&& cd /opencv-${OPENCV_VERSION}/cmake_binary \
+	&& cmake -DBUILD_TIFF=ON \
+	-DBUILD_opencv_java=OFF \
+	-DWITH_CUDA=OFF \
+	-DWITH_OPENGL=ON \
+	-DWITH_OPENCL=ON \
+	-DWITH_IPP=ON \
+	-DWITH_TBB=ON \
+	-DWITH_EIGEN=ON \
+	-DWITH_V4L=ON \
+	-DBUILD_TESTS=OFF \
+	-DBUILD_PERF_TESTS=OFF \
+	-DCMAKE_BUILD_TYPE=RELEASE \
+	-DCMAKE_INSTALL_PREFIX=$(python3.6 -c "import sys; print(sys.prefix)") \
+	-DPYTHON_EXECUTABLE=$(which python3.6) \
+	-DPYTHON_INCLUDE_DIR=$(python3.6 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
+	-DPYTHON_PACKAGES_PATH=$(python3.6 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") \
+	.. \
 	&& make install \
- 	&& rm /${OPENCV_VERSION}.zip \
- 	&& rm -r /opencv-${OPENCV_VERSION}
+	&& rm /${OPENCV_VERSION}.zip \
+	&& rm -r /opencv-${OPENCV_VERSION}
 RUN  ln -s \
 	/usr/lib/python3.6/dist-packages/cv2/python-3.6/cv2.cpython-36m-x86_64-linux-gnu.so \
 	/usr/local/lib/python3.6/dist-packages/cv2.so
@@ -125,18 +124,19 @@ RUN pip3 install keras
 #---------------Install ONNX-TensorRT---------------
 # determine DGPU_ARCHS from https://developer.nvidia.com/cuda-gpus
 # https://github.com/onnx/onnx-tensorrt
+
 RUN	git clone --recursive https://github.com/onnx/onnx-tensorrt.git &&\
- 	cd onnx-tensorrt &&\
- 	mkdir build  &&\
- 	cd build &&\
-        cmake .. -DCUDA_INCLUDE_DIRS=/usr/local/cuda/include -DTENSORRT_ROOT=/usr/src/tensorrt -DGPU_ARCHS="30" &&\
- 	make -j8 &&\
- 	make install &&\
- 	ldconfig && \
- 	cd .. && \
- 	python setup.py build &&\
+	cd onnx-tensorrt &&\
+	mkdir build  &&\
+	cd build &&\
+	cmake .. -DCUDA_INCLUDE_DIRS=/usr/local/cuda/include -DTENSORRT_ROOT=/usr/src/tensorrt -DGPU_ARCHS="61" &&\
+	make -j8 &&\
+	make install &&\
+	ldconfig && \
+	cd .. && \
+	python setup.py build &&\
 	python setup.py install &&\
- 	rm -rf ./build/
+	rm -rf ./build/
 
 
 #----------------Perform some cleaning-----------------------
