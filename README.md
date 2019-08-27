@@ -1,7 +1,11 @@
-# AI-lab: A development environment for AI-based computer vision application
+# AI-lab: The ideal development environment for Data Scientists to develop algorithm based on machine learning,artificial intelligence, Computer Vision...
+
+![All in one solution for data science](AI-lab_logos.png)
+
+
 <!-- TOC -->
 
-- [AI-lab: A development environment for AI-based computer vision application](#ai-lab-a-development-environment-for-ai-based-computer-vision-application)
+- [AI-lab: The ideal development environment for Data Scientists to develop algorithm based on machine learning,artificial intelligence, Computer Vision...](#ai-lab-the-ideal-development-environment-for-data-scientists-to-develop-algorithm-based-on-machine-learningartificial-intelligence-computer-vision)
 	- [Description](#description)
 	- [Install AI-lab](#install-ai-lab)
 	- [Start developing](#start-developing)
@@ -10,8 +14,6 @@
 	- [Do you have any suggestions ?](#do-you-have-any-suggestions-)
 
 <!-- /TOC -->
-
-![All in one solution for data science](AI-lab_logos.png)
 
 ## Description
 This project is reserved for creating a new development environment using docker for exporting AI models in data science, and specially, computer vision. 
