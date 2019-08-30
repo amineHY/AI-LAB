@@ -1,4 +1,4 @@
-# AI-lab: The ideal development environment for Data Scientists to develop and export machine learning model for production
+# AI-lab: The ideal development environment for Data Scientists to develop and export machine learning models for production
 
 
 ![All in one solution for data science](AI-lab_logos.png)
@@ -17,11 +17,11 @@
 <!-- /TOC -->
 
 ## Description
-This project is reserved for creating a new development environment using docker for exporting AI models in data science, and specially, computer vision. 
+This project is reserved for creating a new development environment using docker for developing AI models in data science, in particular, computer vision. 
 
-I hand-crafted AI-lab to take advantage of docker capability to have a reproducible and portable development environment. It allows you developing your artificial intelligence based computer vision application in Python using the most used artificial intelligence frameworks.
+I hand-crafted AI-lab to take advantage of docker capability and to have a reproducible and portable development environment. AI-lab allows you developing your artificial intelligence based computer vision application in Python using the most used artificial intelligence frameworks.
 
-AI-lab is meant to be used to building, training, validating, testing your deep learning models. It is a a good tool to do transfer learning.
+AI-lab is meant to be used to building, training, validating, testing your deep learning models, for instance is a a good tool to do transfer learning. It includes:
 
 	- Ubuntu 18.04
 	- NVIDIA CUDA 10.1
@@ -92,7 +92,7 @@ In practice:
 	cd /path/to/folder/application
 	mkdir .devcontainer && cd .devcontaier
 ```
-* Copy all files of this repository to `.devcontainer`
+* Copy all files of this repository to `.devcontainer` (`Dockerfile`, `requirements.txt` and `devcontainer.json`)
 
 ``` bash
 	git clone https://gitlab.com/aminehy/ai-lab.git
