@@ -11,6 +11,7 @@ pandas
 pylint
 imutils
 h5py
+visdom
 
 # Additional packages
 jupyter
@@ -21,6 +22,7 @@ moviepy
 pyyaml 
 wheel 
 ipython==5.0
+autopep8
 
 # Converters
 tf2onnx

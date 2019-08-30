@@ -1,0 +1,55 @@
+// For format details, see https://aka.ms/vscode-remote/devcontainer.json or the definition README at
+// https://github.com/microsoft/vscode-dev-containers/tree/master/containers/docker-existing-dockerfile
+{
+	// See https://aka.ms/vscode-remote/devcontainer.json for format details.
+	"name": "AI-lab",
+
+	// Sets the run context to one level up instead of the .devcontainer folder.
+	"context": ".",
+
+	// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
+	"dockerFile": "Dockerfile",
+
+	// The optional 'runArgs' property can be used to specify additional runtime arguments.
+	"runArgs": [
+		// Uncomment the next line to use Docker from inside the container. See https://aka.ms/vscode-remote/samples/docker-in-docker for details.
+		// "-v","/var/run/docker.sock:/var/run/docker.sock",
+
+		// Uncomment the next line if you will be using a ptrace-based debugger like C++, Go, and Rust.
+		// "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined"
+
+		// Uncomment the next line to use a non-root user. See https://aka.ms/vscode-remote/containers/non-root-user.
+		// "-u", "1000",
+		//"-v", "/dev/video0:/dev/video0",
+		 "-v", "pwd:/workspace",
+		 "--runtime", "nvidia",
+		 "-w", "/workspace",
+		 "-e", "DISPLAY=:1",
+		 "-e", "NVIDIA_VISIBLE_DEVICES=all",
+		 "-p", "8888:8888",
+		 "--privileged",
+		 "-v", "/tmp/.X11-unix:/tmp/.X11-unix:rw",
+		 "-v", "/tmp/.docker.xauth:/tmp/.docker.xauth",
+		 "-v", "/etc/localtime:/etc/localtime",
+		 "-v", "/etc/timezone:/etc/timezone",
+		 "-v", "/var/run/docker.sock:/var/run/docker.sock",
+		 "--device","/dev/video0",
+		 "--ipc", "host"
+
+	],
+
+	// Uncomment the next line if you want to publish any ports.
+	// "appPort": [],
+
+	// Uncomment the next line if you want to add in default container specific settings.json values
+	// "settings":  { "workbench.colorTheme": "Quiet Light" },
+
+	// Uncomment the next line to run commands after the container is created - for example installing git.
+	// "postCreateCommand": "apt-get update && apt-get install -y git",
+
+	// Add the IDs of any extensions you want installed in the array below.
+	"extensions": ["ms-python.python", "edonet.vscode-command-runner", "streetsidesoftware.code-spell-checker", "TabNine.tabnine-vscode",  	
+		"himanoa.Python-autopep8"],
+	// VS Code should stop the container when the VS Code window is closed / shut down
+	"shutdownAction": "stopContainer",
+}

@@ -1,7 +1,7 @@
 FROM nvcr.io/nvidia/tensorrt:19.07-py3
 LABEL maintainer "M. Amine Hadj-Youcef  <hadjyoucef.amine@gmail.com>"
 
-# Connect with me: LinkedIn - https://www.linkedin.com/in/aminehy/
+# If you have any comment : LinkedIn - https://www.linkedin.com/in/aminehy/
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -69,7 +69,6 @@ RUN pip3 install --upgrade pip
 #---------------Install python requirements---------
 COPY requirements.txt /tmp/
 RUN pip3 install --requirement /tmp/requirements.txt
-# find ./samples -name requirements.txt
 
 
 #---------------Install opencv----------------------
@@ -114,6 +113,7 @@ RUN pip3 install torch==1.2.0+cu92 torchvision==0.4.0+cu92 -f https://download.p
 
 #---------------Install TensorFlow------------------
 RUN pip3 install tensorflow-gpu
+RUN pip3 install tflearn
 
 #---------------Install ONNX------------------------
 RUN pip3 install onnx onnxmltools onnxruntime-gpu
@@ -138,7 +138,6 @@ RUN	git clone --recursive https://github.com/onnx/onnx-tensorrt.git &&\
 	python setup.py install &&\
 	rm -rf ./build/
 
-
 #----------------Perform some cleaning-----------------------
 RUN (apt-get -qq autoremove -y; \
 	apt-get -qq autoclean -y)
@@ -146,6 +145,5 @@ RUN (apt-get -qq autoremove -y; \
 
 #----------------set the working directory-------------------
 WORKDIR /workspace
-
 
 CMD ["jupyter", "notebook", "--allow-root", "--port=8888", "--ip=0.0.0.0", "--no-browser"]
