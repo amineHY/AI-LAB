@@ -1,0 +1,30 @@
+# Python packages
+numpy
+matplotlib 
+mahotas 
+scikit-learn 
+scikit-image 
+scipy
+pycuda==2018.1.1
+Pillow==6.0.0
+pandas
+pylint
+imutils
+h5py
+visdom
+
+# Additional packages
+jupyter
+requests
+argparse
+wget>=3.2
+moviepy
+pyyaml 
+wheel 
+ipython==5.0
+autopep8
+
+# Converters
+tf2onnx
+keras2onnx 
+skl2onnx
