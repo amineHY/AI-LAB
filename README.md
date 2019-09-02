@@ -17,7 +17,7 @@
 <!-- /TOC -->
 
 ## Description
-This project is reserved for creating a new development environment using docker for developing AI models in data science, in particular, computer vision. 
+This project is reserved for creating a new development environment using docker for developing AI models in data science, in particular, computer vision.
 
 I hand-crafted AI-lab to take advantage of docker capability and to have a reproducible and portable development environment. AI-lab allows you developing your artificial intelligence based computer vision application in Python using the most used artificial intelligence frameworks.
 
@@ -28,7 +28,7 @@ AI-lab is meant to be used to building, training, validating, testing your deep 
 	- NVIDIA cuDNN 7.6.0
 	- OpenCV 4.1.0
 	- Python 3.6
-	- Most used AI framework: 
+	- Most used AI framework:
     	- TensorRT
       	- TensorFlow
       	- PyTorch
@@ -38,18 +38,18 @@ AI-lab is meant to be used to building, training, validating, testing your deep 
     	- Jupyter-lab
     	- VS Code integration with remote development
     	- numpy
-    	- matplotlib 
-    	- scikit-learn 
+    	- matplotlib
+    	- scikit-learn
     	- scipy
     	- pandas
     	- and more
-	
+
 ## Install AI-lab
 First, you must have `docker-ce` installed on your machine to be able to use the pre-configured development environment. To do that, simply follow the steps to install [docker for Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/), or select the suitable version depending on your OS.
 
 
 * Pull AI-lab from Docker Hub
-  
+
 	```bash
 		docker pull aminehy/ai-lab
 	```
@@ -72,35 +72,32 @@ First, you must have `docker-ce` installed on your machine to be able to use the
 		-p 8888:8888 aminehy/ai-lab:latest
 	```
 
-## Start developing 
+## Start developing
 ### Jupyter notebook
+
 If AI-lab runs correctly on your machine then `Jupyter notebook` should run automatically. If this is not the case, launch it from the terminal with this command
 
-```bash 
+```bash
 jupyter notebook --allow-root --port=8888 --ip=0.0.0.0 --no-browser
 ```
+
 ### VS Code
 
-
-[VS Code](https://code.visualstudio.com/) offers the possibily to develop from inside AI-lab through the extension [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack).
+[VS Code](https://code.visualstudio.com/) offers the possibility to develop from inside of AI-lab through the extension [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack).
 
 Read more in details [here](https://code.visualstudio.com/docs/remote/containers).
 
-In practice:
-* Create a folder named `.devcontainer` to your application folder
+
+First clone this repository
 ```bash
-	cd /path/to/folder/application
-	mkdir .devcontainer && cd .devcontaier
+	git clone https://github.com/amineHY/AI-lab.git /path/to/folder/application
 ```
-* Copy all files of this repository to `.devcontainer` (`Dockerfile`, `requirements.txt` and `devcontainer.json`)
+
+then start developing by launching VS Code
 
 ``` bash
-	git clone https://gitlab.com/aminehy/ai-lab.git
-	mv ai-lab/ /path/to/folder/application/.devcontainer
+	code .
 ```
-
-* Once you launch `VS Code` from the application folder containing the `.devcontainer` folder, `VS Code` detect automatically the remote development configuration and will ask you to `Reopen in container` click and your are all setup.
-
 
 
 
