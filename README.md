@@ -93,9 +93,10 @@ First clone this repository
 	git clone https://github.com/amineHY/AI-lab.git /path/to/folder/application
 ```
 
-then start developing by launching VS Code
+move to that directory then start developing by launching VS Code
 
 ``` bash
+	cd /path/to/folder/application
 	code .
 ```
 
