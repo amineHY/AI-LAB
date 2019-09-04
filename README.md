@@ -94,11 +94,17 @@ First clone this repository and move to it
 ```
 
 move to that directory then start developing by launching VS Code
-copy the content of the folder `vscode_remote_dev` into your workspace
+
+Move the two folders `vscode_remote_dev` (`.devcontainer` and `.vscode`) to the root of your application folder
 ``` bash
-	sudo cp -R /path/to/folder/application/vscode_remote_dev/ .
-	code .
+	mv vscode_remote_dev/.* ./
 ```
+**Note**: These two folders are hidden and will live in the directory of you application so that vscode detect the configuration of AI-lab
+
+Finally, launch VS Code
+```bash
+ 	code .
+ ```
 
 ## Do you have any suggestions?
 
