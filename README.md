@@ -12,7 +12,6 @@
 	- [1.3. Launch an IDE and Start Developing](#13-launch-an-ide-and-start-developing)
 		- [1.3.1. Jupyter notebook](#131-jupyter-notebook)
 		- [1.3.2. VS Code](#132-vs-code)
-	- [Memory usage of the GPU](#memory-usage-of-the-gpu)
 	- [Do you have any suggestions?](#do-you-have-any-suggestions)
 
 <!-- /TOC -->
@@ -108,7 +107,9 @@ Finally, launch VS Code
  ```
 
 ## Memory usage of the GPU
-watch -n0.5 -c gpustat --c -cupP
+```bash
+	watch -n0.5 -c gpustat --c -cupP
+```
 
 ## Do you have any suggestions?
 
