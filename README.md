@@ -12,6 +12,7 @@
 	- [Launch an IDE and Start Developing](#launch-an-ide-and-start-developing)
 		- [1. Jupyter notebook](#1-jupyter-notebook)
 		- [2. VS Code](#2-vs-code)
+	- [To display to memory usage of the GPU:](#to-display-to-memory-usage-of-the-gpu)
 	- [Do you have any suggestions?](#do-you-have-any-suggestions)
 
 <!-- /TOC -->
@@ -99,12 +100,15 @@ Move the two folders `vscode_remote_dev` (`.devcontainer` and `.vscode`) to the 
 ``` bash
 	mv vscode_remote_dev/.* ./
 ```
-**Note**: These two folders are hidden and will live in the directory of you application so that vscode detect the configuration of AI-lab
+**Note**: These two folders are hidden and will live in the directory of your application so that VS Code automatically detect AI-lab configuration
 
 Finally, launch VS Code
 ```bash
  	code .
  ```
+
+## To display to memory usage of the GPU:
+watch -n0.5 -c gpustat --c -cupP
 
 ## Do you have any suggestions?
 

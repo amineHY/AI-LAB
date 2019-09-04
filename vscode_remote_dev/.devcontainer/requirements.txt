@@ -23,6 +23,7 @@ pyyaml
 wheel 
 ipython==5.0
 autopep8
+gpustat # watch -n0.5 -c gpustat --c -cupP
 
 # Converters
 tf2onnx
