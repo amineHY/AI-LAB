@@ -1,4 +1,4 @@
-# AI-lab: The Ideal Development Environment for Data Scientists to Develop and Export Machine Learning Models
+# 1. AI-lab: The Ideal Development Environment for Data Scientists to Develop and Export Machine Learning Models
 
 
 ![All in one solution for data science](AI-lab_logos.png)
@@ -6,18 +6,18 @@
 
 <!-- TOC -->
 
-- [AI-lab: The Ideal Development Environment for Data Scientists to Develop and Export Machine Learning Models](#ai-lab-the-ideal-development-environment-for-data-scientists-to-develop-and-export-machine-learning-models)
-	- [Description](#description)
-	- [USAGE](#usage)
-	- [Launch an IDE and Start Developing](#launch-an-ide-and-start-developing)
-		- [1. Jupyter notebook](#1-jupyter-notebook)
-		- [2. VS Code](#2-vs-code)
-	- [To display to memory usage of the GPU:](#to-display-to-memory-usage-of-the-gpu)
+- [1. AI-lab: The Ideal Development Environment for Data Scientists to Develop and Export Machine Learning Models](#1-ai-lab-the-ideal-development-environment-for-data-scientists-to-develop-and-export-machine-learning-models)
+	- [1.1. Description](#11-description)
+	- [1.2. USAGE](#12-usage)
+	- [1.3. Launch an IDE and Start Developing](#13-launch-an-ide-and-start-developing)
+		- [1.3.1. Jupyter notebook](#131-jupyter-notebook)
+		- [1.3.2. VS Code](#132-vs-code)
+	- [Memory usage of the GPU](#memory-usage-of-the-gpu)
 	- [Do you have any suggestions?](#do-you-have-any-suggestions)
 
 <!-- /TOC -->
 
-## Description
+## 1.1. Description
 This project is reserved for creating a new development environment using docker for developing AI models in data science, in particular, computer vision.
 
 I hand-crafted AI-lab to take advantage of docker capability and to have a reproducible and portable development environment. AI-lab allows you developing your artificial intelligence based computer vision application in Python using the most used artificial intelligence frameworks.
@@ -45,7 +45,7 @@ AI-lab is meant to be used to building, training, validating, testing your deep 
     	- pandas
     	- and more
 
-## USAGE
+## 1.2. USAGE
 
 To install AI-lab you must have `docker-ce` installed on your machine to be able to use the pre-configured development environment. To do that, simply follow the steps to install [docker for Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/), or select the suitable version depending on your OS.
 
@@ -74,8 +74,8 @@ To install AI-lab you must have `docker-ce` installed on your machine to be able
 		-p 8888:8888 -p 6006:6006 aminehy/ai-lab:latest
 	```
 
-## Launch an IDE and Start Developing
-### 1. Jupyter notebook
+## 1.3. Launch an IDE and Start Developing
+### 1.3.1. Jupyter notebook
 
 If AI-lab runs correctly on your machine then `Jupyter notebook` should run automatically. If this is not the case, launch it from the terminal with this command
 
@@ -83,7 +83,7 @@ If AI-lab runs correctly on your machine then `Jupyter notebook` should run auto
 jupyter notebook --allow-root --port=8888 --ip=0.0.0.0 --no-browser
 ```
 
-### 2. VS Code
+### 1.3.2. VS Code
 
 [VS Code](https://code.visualstudio.com/) offers the possibility to develop from inside of AI-lab through the extension [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack). Read more in details [here](https://code.visualstudio.com/docs/remote/containers).
 
@@ -107,7 +107,7 @@ Finally, launch VS Code
  	code .
  ```
 
-## To display to memory usage of the GPU:
+## Memory usage of the GPU
 watch -n0.5 -c gpustat --c -cupP
 
 ## Do you have any suggestions?
