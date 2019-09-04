@@ -1,12 +1,10 @@
-# 1. AI-lab: The Ideal Development Environment for Data Scientists to Develop and Export Machine Learning Models
+# AI-lab: The Ideal Development Environment for Data Scientists to Develop and Export Machine Learning Models
 
 
 ![All in one solution for data science](AI-lab_logos.png)
-
-
 <!-- TOC -->
 
-- [1. AI-lab: The Ideal Development Environment for Data Scientists to Develop and Export Machine Learning Models](#1-ai-lab-the-ideal-development-environment-for-data-scientists-to-develop-and-export-machine-learning-models)
+- [AI-lab: The Ideal Development Environment for Data Scientists to Develop and Export Machine Learning Models](#ai-lab-the-ideal-development-environment-for-data-scientists-to-develop-and-export-machine-learning-models)
 	- [1.1. Description](#11-description)
 	- [1.2. USAGE](#12-usage)
 	- [1.3. Launch an IDE and Start Developing](#13-launch-an-ide-and-start-developing)
@@ -15,6 +13,8 @@
 	- [Do you have any suggestions?](#do-you-have-any-suggestions)
 
 <!-- /TOC -->
+
+
 
 ## 1.1. Description
 This project is reserved for creating a new development environment using docker for developing AI models in data science, in particular, computer vision.
@@ -106,7 +106,7 @@ Finally, launch VS Code
  	code .
  ```
 
-## Memory usage of the GPU
+## Display the Memory Usage of the GPU
 ```bash
 	watch -n0.5 -c gpustat --c -cupP
 ```
