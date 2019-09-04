@@ -3,6 +3,6 @@
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
     "remote.containers.defaultExtensions": [
-        "ms-python.python",	"edonet.vscode-command-runner"
+        "ms-python.python",	"edonet.vscode-command-runner",	"liximomo.sftp"
     ]
 }

@@ -138,10 +138,12 @@ RUN	git clone --recursive https://github.com/onnx/onnx-tensorrt.git &&\
 	python setup.py install &&\
 	rm -rf ./build/
 
+#----------------Install TensorBoardX -----------------------
+RUN git clone https://github.com/lanpa/tensorboardX && cd tensorboardX && python setup.py install
+
 #----------------Perform some cleaning-----------------------
 RUN (apt-get -qq autoremove -y; \
 	apt-get -qq autoclean -y)
-
 
 #----------------set the working directory-------------------
 WORKDIR /workspace

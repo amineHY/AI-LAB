@@ -1,4 +1,4 @@
-# AI-lab: The ideal development environment for Data Scientists to develop and export machine learning models for production
+# AI-lab: The Ideal Development Environment for Data Scientists to Develop and Export Machine Learning Models
 
 
 ![All in one solution for data science](AI-lab_logos.png)
@@ -6,13 +6,13 @@
 
 <!-- TOC -->
 
-- [AI-lab: The ideal development environment for Data Scientists to develop algorithm based on machine learning, artificial intelligence, Computer Vision...](#ai-lab-the-ideal-development-environment-for-data-scientists-to-develop-algorithm-based-on-machine-learning-artificial-intelligence-computer-vision)
+- [AI-lab: The Ideal Development Environment for Data Scientists to Develop and Export Machine Learning Models](#ai-lab-the-ideal-development-environment-for-data-scientists-to-develop-and-export-machine-learning-models)
 	- [Description](#description)
-	- [Install AI-lab](#install-ai-lab)
-	- [Start developing](#start-developing)
-		- [Jupyter notebook](#jupyter-notebook)
-		- [VS Code](#vs-code)
-	- [Do you have any suggestions ?](#do-you-have-any-suggestions-)
+	- [USAGE](#usage)
+	- [Launch an IDE and Start Developing](#launch-an-ide-and-start-developing)
+		- [1. Jupyter notebook](#1-jupyter-notebook)
+		- [2. VS Code](#2-vs-code)
+	- [Do you have any suggestions?](#do-you-have-any-suggestions)
 
 <!-- /TOC -->
 
@@ -44,8 +44,9 @@ AI-lab is meant to be used to building, training, validating, testing your deep 
     	- pandas
     	- and more
 
-## Install AI-lab
-First, you must have `docker-ce` installed on your machine to be able to use the pre-configured development environment. To do that, simply follow the steps to install [docker for Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/), or select the suitable version depending on your OS.
+## USAGE
+
+To install AI-lab you must have `docker-ce` installed on your machine to be able to use the pre-configured development environment. To do that, simply follow the steps to install [docker for Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/), or select the suitable version depending on your OS.
 
 
 * Pull AI-lab from Docker Hub
@@ -58,7 +59,7 @@ First, you must have `docker-ce` installed on your machine to be able to use the
 
 	* Move to your application folder
 	``` bash
-		cd /folder/application
+		cd path/to/folder/application
 	```
 
 	* then run AI-lab
@@ -69,11 +70,11 @@ First, you must have `docker-ce` installed on your machine to be able to use the
 		--runtime=nvidia -w /workspace \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
 		-e DISPLAY=$DISPLAY \
-		-p 8888:8888 aminehy/ai-lab:latest
+		-p 8888:8888 -p 6006:6006 aminehy/ai-lab:latest
 	```
 
-## Start developing
-### Jupyter notebook
+## Launch an IDE and Start Developing
+### 1. Jupyter notebook
 
 If AI-lab runs correctly on your machine then `Jupyter notebook` should run automatically. If this is not the case, launch it from the terminal with this command
 
@@ -81,28 +82,24 @@ If AI-lab runs correctly on your machine then `Jupyter notebook` should run auto
 jupyter notebook --allow-root --port=8888 --ip=0.0.0.0 --no-browser
 ```
 
-### VS Code
+### 2. VS Code
 
-[VS Code](https://code.visualstudio.com/) offers the possibility to develop from inside of AI-lab through the extension [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack).
-
-Read more in details [here](https://code.visualstudio.com/docs/remote/containers).
+[VS Code](https://code.visualstudio.com/) offers the possibility to develop from inside of AI-lab through the extension [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack). Read more in details [here](https://code.visualstudio.com/docs/remote/containers).
 
 
-First clone this repository
+First clone this repository and move to it
 ```bash
 	git clone https://github.com/amineHY/AI-lab.git /path/to/folder/application
+	cd /path/to/folder/application
 ```
 
 move to that directory then start developing by launching VS Code
-
+copy the content of the folder `vscode_remote_dev` into your workspace
 ``` bash
-	cd /path/to/folder/application
+	sudo cp -R /path/to/folder/application/vscode_remote_dev/ .
 	code .
 ```
 
+## Do you have any suggestions?
 
-
-## Do you have any suggestions ?
-
-Please contact me and let me know.
-LinkedIn - https://www.linkedin.com/in/aminehy/
+Please contact me and let me know [LinkedIn](https://www.linkedin.com/in/aminehy/).
