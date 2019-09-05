@@ -66,11 +66,6 @@ RUN cd /usr/local/src \
 RUN pip3 install --upgrade pip
 
 
-#---------------Install python requirements---------
-COPY requirements.txt /tmp/
-RUN pip3 install --requirement /tmp/requirements.txt
-
-
 #---------------Install opencv----------------------
 
 WORKDIR /
@@ -140,6 +135,11 @@ RUN	git clone --recursive https://github.com/onnx/onnx-tensorrt.git &&\
 
 #----------------Install TensorBoardX -----------------------
 RUN git clone https://github.com/lanpa/tensorboardX && cd tensorboardX && python setup.py install
+
+#---------------Install python requirements---------
+COPY requirements.txt /tmp/
+RUN pip3 install --requirement /tmp/requirements.txt
+
 
 #----------------Perform some cleaning-----------------------
 RUN (apt-get -qq autoremove -y; \
