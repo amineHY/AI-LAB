@@ -84,32 +84,36 @@ jupyter notebook --allow-root --port=8888 --ip=0.0.0.0 --no-browser
 
 ### 1.3.2. VS Code
 
-[VS Code](https://code.visualstudio.com/) offers the possibility to develop from inside of AI-lab through the extension [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack). Read more in details [here](https://code.visualstudio.com/docs/remote/containers).
+[VS Code](https://code.visualstudio.com/) offers the possibility to develop from inside docker container (thus, inside AI-lab), through the extension [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack). Read more in details [here](https://code.visualstudio.com/docs/remote/containers).
 
 
-First clone this repository and move to it
+
+Two configuration folders `.devcontainer` and `.vscode` (inside `vscode_remote_dev`) are necessary to be able to use VS Code inside AI-lab. These two folders are hidden and must live in the directory of your application so that VS Code automatically detect AI-lab configuration. Therefore, you need to copy them inside your application folder.
+
+To get these folders, first clone this repository and move to it
 ```bash
-	git clone https://github.com/amineHY/AI-lab.git /path/to/folder/application
-	cd /path/to/folder/application
+	git clone https://github.com/amineHY/AI-lab.git
+	cd /AI-lab
 ```
 
-move to that directory then start developing by launching VS Code
-
-Move the two folders `vscode_remote_dev` (`.devcontainer` and `.vscode`) to the root of your application folder
+Copy the two folders to your application folder, for instance `/path_to_folder_application`
 ``` bash
-	mv vscode_remote_dev/.* ./
+	sudo cp -R AI-lab/vscode_remote_dev/.* /path_to_folder_application
 ```
-**Note**: These two folders are hidden and will live in the directory of your application so that VS Code automatically detect AI-lab configuration
 
-Finally, launch VS Code
+Finally, move to your application folder and launch VS Code
 ```bash
+	cd /path_to_folder_application
  	code .
  ```
 
 ## Display the Memory Usage of the GPU
-```bash
-	watch -n0.5 -c gpustat --c -cupP
+
+Depending on you developing, you might want to watch the memory consumption of your GPU. You can do that thanks to `gpustat`.
+``` bash
+watch -n0.5 -c gpustat --c -cupP
 ```
+
 
 ## Do you have any suggestions?
 
