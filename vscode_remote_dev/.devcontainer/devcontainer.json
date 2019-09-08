@@ -23,7 +23,7 @@
 		"-v",	"pwd:/workspace",
 		"--runtime", "nvidia",
 		"-w", "/workspace",
-		"-e", "DISPLAY=:1",
+		"-e", "DISPLAY=${env:DISPLAY}",
 		"-e",	"NVIDIA_VISIBLE_DEVICES=all",
 		"-p",	"8888:8888",
 		"-p", "6006-6015:6006-6015",
@@ -58,7 +58,6 @@
 		"ms-python.python",
 		"edonet.vscode-command-runner",
 		"streetsidesoftware.code-spell-checker",
-		"TabNine.tabnine-vscode",
 		"himanoa.Python-autopep8"
 	],
 
