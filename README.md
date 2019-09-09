@@ -18,9 +18,11 @@
 
 This project is reserved for creating a new development environment using docker for developing AI models in data science, in particular, computer vision.
 
-I hand-crafted AI-lab to take advantage of docker capability and to have a reproducible and portable development environment. AI-lab allows you developing your artificial intelligence based computer vision application in Python using the most used artificial intelligence frameworks.
+I hand-crafted AI-lab (on top of [NVIDIA Container](https://ngc.nvidia.com/catalog/containers/nvidia:tensorrt)) and take advantage of docker capability to have a reproducible and portable development environment. AI-lab allows you developing your artificial intelligence based application in Python using the most used artificial intelligence frameworks.
 
-AI-lab is meant to be used to building, training, validating, testing your deep learning models, for instance is a a good tool to do transfer learning. It includes:
+AI-lab is meant to be used to building, training, validating, testing your deep learning models, for instance is a a good tool to do transfer learning. 
+
+**It includes**
 
 - Ubuntu 18.04
 - NVIDIA CUDA 10.1
@@ -56,7 +58,7 @@ docker pull aminehy/ai-lab
 * Run the AI-lab and start your development
 	* Move to your application folder
 	``` bash
-	cd path/to/folder/application
+	cd path_to_folder_application
 	```
 
 	* then run AI-lab
@@ -69,6 +71,18 @@ docker pull aminehy/ai-lab
 	-e DISPLAY=$DISPLAY \
 	-p 8888:8888 -p 6006:6006 aminehy/ai-lab:latest
 	```
+
+**Install UFF converter : `convert_to_uff`**
+
+Once you run AI-lab, move to `/opt/tensorrt/python` folder and install `convert-to-uff` using the following commands:
+
+```bash
+cd /opt/tensorrt/python
+dpkg -i *-tf_*.deb
+UFF_PATH="$(python -c 'import uff; print(uff.__path__[0])')"
+chmod +x ${UFF_PATH}/bin/convert_to_uff.py
+ln -sf ${UFF_PATH}/bin/convert_to_uff.py /usr/local/bin/convert-to-uff
+```
 
 ## 1.3. Launch an IDE and Start Developing
 
@@ -106,7 +120,7 @@ cd /path_to_folder_application
 code .
  ```
 
-## Display the Memory Usage of the GPU
+## 1.4. Display the Memory Usage of the GPU
 
 Depending on you developing, you might want to watch the memory consumption of your GPU. You can do that thanks to `gpustat`.
 
@@ -116,4 +130,4 @@ watch -n0.5 -c gpustat --c -cupP
 
 ## Do you have any suggestions ?
 
-Please contact me and let me know [LinkedIn](https://www.linkedin.com/in/aminehy/).
+Please create an issue or contact me and let me know on [LinkedIn](https://www.linkedin.com/in/aminehy/).
