@@ -1,26 +1,27 @@
-# AI-lab: The Ideal Development Environment for Data Scientists to Develop and Export Machine Learning Models
+# 1. AI-lab: The Ideal Development Environment for Data Scientists to Develop and Export Machine Learning Models
 
 
 ![All in one solution for data science](AI-lab_logos.png)
+
 <!-- TOC -->
 
-- [AI-lab: The Ideal Development Environment for Data Scientists to Develop and Export Machine Learning Models](#ai-lab-the-ideal-development-environment-for-data-scientists-to-develop-and-export-machine-learning-models)
+- [1. AI-lab: The Ideal Development Environment for Data Scientists to Develop and Export Machine Learning Models](#1-ai-lab-the-ideal-development-environment-for-data-scientists-to-develop-and-export-machine-learning-models)
 	- [1.1. Description](#11-description)
-	- [1.2. USAGE](#12-usage)
-	- [1.3. Launch an IDE and Start Developing](#13-launch-an-ide-and-start-developing)
-		- [1.3.1. Jupyter notebook](#131-jupyter-notebook)
-		- [1.3.2. VS Code](#132-vs-code)
+	- [1.2. Pre-requisites](#12-pre-requisites)
+	- [1.3. USAGE](#13-usage)
+	- [1.4. Launch an IDE and Start Developing](#14-launch-an-ide-and-start-developing)
+		- [1.4.1. Jupyter notebook](#141-jupyter-notebook)
+		- [1.4.2. VS Code](#142-vs-code)
 	- [Do you have any suggestions ?](#do-you-have-any-suggestions-)
 
 <!-- /TOC -->
-
 ## 1.1. Description
 
 This project is reserved for creating a new development environment using docker for developing AI models in data science, in particular, computer vision.
 
 I hand-crafted AI-lab (on top of [NVIDIA Container](https://ngc.nvidia.com/catalog/containers/nvidia:tensorrt)) and take advantage of docker capability to have a reproducible and portable development environment. AI-lab allows you developing your artificial intelligence based application in Python using the most used artificial intelligence frameworks.
 
-AI-lab is meant to be used to building, training, validating, testing your deep learning models, for instance is a a good tool to do transfer learning. 
+AI-lab is meant to be used to building, training, validating, testing your deep learning models, for instance is a a good tool to do transfer learning.
 
 **It includes**
 
@@ -45,34 +46,39 @@ AI-lab is meant to be used to building, training, validating, testing your deep 
   - pandas
   - and more
 
-## 1.2. USAGE
+## 1.2. Pre-requisites
+
+* An operating system with AMD64 architecture (`dpkg --print-architecture`), e,g, 64-bit Linux OS (check with `lsb_release -a`)
+  
+*  NVIDIA drivers and [CUDA toolkit](https://developer.nvidia.com/cuda-downloads): (check with `nvidia-smi`)
+
+* Docker-ce: Install or reinstall docker-ce, please follow the original docker-ce [installation guide](https://docs.docker.com/install/linux/docker-ce/ubuntu/), including the [post-installation](https://docs.docker.com/install/linux/linux-postinstall/) steps for Linux
+
+
+## 1.3. USAGE
 
 To install AI-lab you must have `docker-ce` installed on your machine to be able to use the pre-configured development environment. To do that, simply follow the steps to install [docker for Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/), or select the suitable version depending on your OS.
 
-* Pull AI-lab from Docker Hub
+**Pull AI-lab from Docker Hub**
 
 ```bash
 docker pull aminehy/ai-lab
 ```
 
-* Run the AI-lab and start your development
-	* Move to your application folder
-	``` bash
-	cd path_to_folder_application
-	```
+**Run the AI-lab and start your development**
+ 
+``` bash
+xhost +
+docker run -it --rm 
+--runtime=nvidia 
+-v $(pwd):/workspace \
+-w /workspace \
+-v /tmp/.X11-unix:/tmp/.X11-unix \
+-e DISPLAY=$DISPLAY \
+-p 8888:8888 -p 6006:6006 aminehy/ai-lab:latest
+```
 
-	* then run AI-lab
-	``` bash
-	xhost +
-
-	docker run -it --rm -v $(pwd):/workspace \
-	--runtime=nvidia -w /workspace \
-	-v /tmp/.X11-unix:/tmp/.X11-unix \
-	-e DISPLAY=$DISPLAY \
-	-p 8888:8888 -p 6006:6006 aminehy/ai-lab:latest
-	```
-
-**Install UFF converter : `convert_to_uff`**
+**Install UFF converter : `convert-to-uff`**
 
 Once you run AI-lab, move to `/opt/tensorrt/python` folder and install `convert-to-uff` using the following commands:
 
@@ -84,9 +90,9 @@ chmod +x ${UFF_PATH}/bin/convert_to_uff.py
 ln -sf ${UFF_PATH}/bin/convert_to_uff.py /usr/local/bin/convert-to-uff
 ```
 
-## 1.3. Launch an IDE and Start Developing
+## 1.4. Launch an IDE and Start Developing
 
-### 1.3.1. Jupyter notebook
+### 1.4.1. Jupyter notebook
 
 If AI-lab runs correctly on your machine then `Jupyter notebook` should run automatically. If this is not the case, launch it from the terminal with this command
 
@@ -94,7 +100,8 @@ If AI-lab runs correctly on your machine then `Jupyter notebook` should run auto
 jupyter notebook --allow-root --port=8888 --ip=0.0.0.0 --no-browser
 ```
 
-### 1.3.2. VS Code
+### 1.4.2. VS Code
+
 
 [VS Code](https://code.visualstudio.com/) offers the possibility to develop from inside docker container (thus, inside AI-lab), through the extension [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack). Read more in details [here](https://code.visualstudio.com/docs/remote/containers).
 
@@ -120,7 +127,7 @@ cd /path_to_folder_application
 code .
  ```
 
-## 1.4. Display the Memory Usage of the GPU
+## 1.5. Display the Memory Usage of the GPU
 
 Depending on you developing, you might want to watch the memory consumption of your GPU. You can do that thanks to `gpustat`.
 
