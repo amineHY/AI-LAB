@@ -1,18 +1,18 @@
-# 1. AI-lab: The Ideal Development Environment for Data Scientists to Develop and Export Machine Learning Models
+# 1. AI-lab: The Ideal Tool for Data Scientists to Develop and Export Machine Learning Models
 
 
 ![All in one solution for data science](AI-lab_logos.png)
 
 <!-- TOC -->
 
-- [1. AI-lab: The Ideal Development Environment for Data Scientists to Develop and Export Machine Learning Models](#1-ai-lab-the-ideal-development-environment-for-data-scientists-to-develop-and-export-machine-learning-models)
-	- [1.1. Description](#11-description)
-	- [1.2. Pre-requisites](#12-pre-requisites)
-	- [1.3. USAGE](#13-usage)
-	- [1.4. Launch an IDE and Start Developing](#14-launch-an-ide-and-start-developing)
-		- [1.4.1. Jupyter notebook](#141-jupyter-notebook)
-		- [1.4.2. VS Code](#142-vs-code)
-	- [Do you have any suggestions ?](#do-you-have-any-suggestions-)
+- [1. AI-lab: The Ideal Tool for Data Scientists to Develop and Export Machine Learning Models](#1-ai-lab-the-ideal-tool-for-data-scientists-to-develop-and-export-machine-learning-models)
+  - [1.1. Description](#11-description)
+  - [1.2. Pre-requisites](#12-pre-requisites)
+  - [1.3. USAGE](#13-usage)
+  - [1.4. Launch an IDE and Start Developing](#14-launch-an-ide-and-start-developing)
+    - [1.4.1. Jupyter notebook](#141-jupyter-notebook)
+    - [1.4.2. VS Code](#142-vs-code)
+  - [Do you have any suggestions ?](#do-you-have-any-suggestions-)
 
 <!-- /TOC -->
 ## 1.1. Description
