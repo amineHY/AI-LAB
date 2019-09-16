@@ -4,5 +4,7 @@
     "python.linting.enabled": true,
     "remote.containers.defaultExtensions": [
         "ms-python.python",	"edonet.vscode-command-runner",	"liximomo.sftp"
-    ]
+    ],
+    "terminal.integrated.fontFamily": "Monospace",
+    "terminal.integrated.fontSize": 14
 }
