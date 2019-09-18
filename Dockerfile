@@ -70,13 +70,14 @@ RUN pip3 install --upgrade pip
 
 WORKDIR /
 ENV OPENCV_VERSION="4.1.0"
-RUN wget -O opencv.zip  https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
-	&& RUN wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/${OPENCV_VERSION}.zip \
-	&& unzip opencv.zip \
-	&& unzip opencv_contrib.zip \
-	&& mkdir /opencv-${OPENCV_VERSION}/cmake_binary \
-	&& cd /opencv-${OPENCV_VERSION}/cmake_binary \
-	&& cmake -DBUILD_TIFF=ON \
+RUN wget -O opencv.zip  https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip 
+RUN wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/${OPENCV_VERSION}.zip 
+RUN unzip opencv.zip 
+RUN unzip opencv_contrib.zip 
+RUN mkdir /opencv-${OPENCV_VERSION}/cmake_binary \
+	&& cd /opencv-${OPENCV_VERSION}/cmake_binary 
+
+RUN cmake -DBUILD_TIFF=ON \
 	-DBUILD_opencv_java=OFF \
 	-DWITH_CUDA=ON \
 	-DENABLE_FAST_MATH=1 \
@@ -102,7 +103,9 @@ RUN wget -O opencv.zip  https://github.com/opencv/opencv/archive/${OPENCV_VERSIO
 	-DOPENCV_EXTRA_MODULES_PATH=/opencv_contrib-${OPENCV_VERSION}/modules \
 	-DBUILD_EXAMPLES=ON \
 	-D CUDA_TOOLKIT_ROOT_DIR= /usr/local/cuda-10.1 \
-	-DWITH_QT=ON .. \
+	-DWITH_QT=ON .. 
+
+RUN make -j4 \
 	&& make install \
 	&& rm opencv.zip \
 	&& rm opencv_contrib.zip \
