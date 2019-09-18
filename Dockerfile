@@ -48,6 +48,7 @@ RUN apt-get -qq update && apt-get -qq install -y --no-install-recommends \
 	libcurl4-openssl-dev\
 	libprotoc-dev \
 	swig\
+	qt5-default \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN cd /usr/local/bin &&\
@@ -74,8 +75,8 @@ RUN wget -O opencv.zip  https://github.com/opencv/opencv/archive/${OPENCV_VERSIO
 RUN wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/${OPENCV_VERSION}.zip 
 RUN unzip opencv.zip 
 RUN unzip opencv_contrib.zip 
-RUN mkdir /opencv-${OPENCV_VERSION}/cmake_binary \
-	&& cd /opencv-${OPENCV_VERSION}/cmake_binary 
+RUN mkdir /opencv-${OPENCV_VERSION}/cmake_binary 
+WORKDIR /opencv-${OPENCV_VERSION}/cmake_binary 
 
 RUN cmake -DBUILD_TIFF=ON \
 	-DBUILD_opencv_java=OFF \
