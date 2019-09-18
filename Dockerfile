@@ -104,10 +104,9 @@ RUN cmake -DBUILD_TIFF=ON \
 	-DOPENCV_EXTRA_MODULES_PATH=/opencv_contrib-${OPENCV_VERSION}/modules \
 	-DBUILD_EXAMPLES=ON \
 	-D CUDA_TOOLKIT_ROOT_DIR= /usr/local/cuda-10.1 \
-	-DWITH_QT=ON .. 
+	-DWITH_QT=ON ..
 
-RUN make -j4 \
-	&& make install \
+RUN make install \
 	&& rm opencv.zip \
 	&& rm opencv_contrib.zip \
 	&& rm -r /opencv-${OPENCV_VERSION} \
