@@ -48,6 +48,9 @@ RUN apt-get -qq update && apt-get -qq install -y --no-install-recommends \
 	libcurl4-openssl-dev\
 	libprotoc-dev \
 	swig\
+	qt5-default \
+	libboost-all-dev \
+	libboost-dev \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN cd /usr/local/bin &&\
@@ -67,16 +70,22 @@ RUN pip3 install --upgrade pip
 
 
 #---------------Install opencv----------------------
-
 WORKDIR /
-ENV OPENCV_VERSION="4.1.0"
-RUN wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
-	&& unzip ${OPENCV_VERSION}.zip \
-	&& mkdir /opencv-${OPENCV_VERSION}/cmake_binary \
-	&& cd /opencv-${OPENCV_VERSION}/cmake_binary \
-	&& cmake -DBUILD_TIFF=ON \
+ENV OPENCV_VERSION="4.1.1"
+RUN wget -O opencv.zip  https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip 
+# RUN wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/${OPENCV_VERSION}.zip 
+RUN unzip opencv.zip 
+# RUN unzip opencv_contrib.zip 
+RUN mkdir /opencv-${OPENCV_VERSION}/cmake_binary 
+WORKDIR /opencv-${OPENCV_VERSION}/cmake_binary 
+
+RUN cmake -DBUILD_TIFF=ON \
 	-DBUILD_opencv_java=OFF \
-	-DWITH_CUDA=OFF \
+	-DWITH_CUDA=ON \
+	-DENABLE_FAST_MATH=1 \
+	-DCUDA_FAST_MATH=1 \
+	-DWITH_CUBLAS=1 \
+	-DENABLE_AVX=ON \
 	-DWITH_OPENGL=ON \
 	-DWITH_OPENCL=ON \
 	-DWITH_IPP=ON \
@@ -90,13 +99,57 @@ RUN wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
 	-DPYTHON_EXECUTABLE=$(which python3.6) \
 	-DPYTHON_INCLUDE_DIR=$(python3.6 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
 	-DPYTHON_PACKAGES_PATH=$(python3.6 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") \
-	.. \
+	-DINSTALL_PYTHON_EXAMPLES=ON \
+	-DINSTALL_C_EXAMPLES=OFF \
+	-DOPENCV_ENABLE_NONFREE=ON \
+	# -DOPENCV_EXTRA_MODULES_PATH=/opencv_contrib-${OPENCV_VERSION}/modules \
+	-DBUILD_EXAMPLES=ON \
+	-D CUDA_TOOLKIT_ROOT_DIR= /usr/local/cuda-10.1 \
+	-DWITH_QT=ON ..
+
+RUN chmod +x download_with_curl.sh \
+	&& sh ./download_with_curl.sh
+
+RUN make -j8 \
 	&& make install \
-	&& rm /${OPENCV_VERSION}.zip \
-	&& rm -r /opencv-${OPENCV_VERSION}
+	&& rm /opencv.zip \
+	# && rm opencv_contrib.zip \
+	&& rm -rf /opencv-${OPENCV_VERSION} 
+	# && rm -rf /opencv_contrib-${OPENCV_VERSION}
+
 RUN  ln -s \
 	/usr/lib/python3.6/dist-packages/cv2/python-3.6/cv2.cpython-36m-x86_64-linux-gnu.so \
 	/usr/local/lib/python3.6/dist-packages/cv2.so
+
+# WORKDIR /
+# ENV OPENCV_VERSION="4.1.0"
+# RUN wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
+# 	&& unzip ${OPENCV_VERSION}.zip \
+# 	&& mkdir /opencv-${OPENCV_VERSION}/cmake_binary \
+# 	&& cd /opencv-${OPENCV_VERSION}/cmake_binary \
+# 	&& cmake -DBUILD_TIFF=ON \
+# 	-DBUILD_opencv_java=OFF \
+# 	-DWITH_CUDA=OFF \
+# 	-DWITH_OPENGL=ON \
+# 	-DWITH_OPENCL=ON \
+# 	-DWITH_IPP=ON \
+# 	-DWITH_TBB=ON \
+# 	-DWITH_EIGEN=ON \
+# 	-DWITH_V4L=ON \
+# 	-DBUILD_TESTS=OFF \
+# 	-DBUILD_PERF_TESTS=OFF \
+# 	-DCMAKE_BUILD_TYPE=RELEASE \
+# 	-DCMAKE_INSTALL_PREFIX=$(python3.6 -c "import sys; print(sys.prefix)") \
+# 	-DPYTHON_EXECUTABLE=$(which python3.6) \
+# 	-DPYTHON_INCLUDE_DIR=$(python3.6 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
+# 	-DPYTHON_PACKAGES_PATH=$(python3.6 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") \
+# 	.. \
+# 	&& make install \
+# 	&& rm /${OPENCV_VERSION}.zip \
+# 	&& rm -r /opencv-${OPENCV_VERSION}
+# RUN  ln -s \
+# 	/usr/lib/python3.6/dist-packages/cv2/python-3.6/cv2.cpython-36m-x86_64-linux-gnu.so \
+# 	/usr/local/lib/python3.6/dist-packages/cv2.so
 
 
 ####################################################
@@ -120,7 +173,7 @@ RUN pip3 install keras
 # determine DGPU_ARCHS from https://developer.nvidia.com/cuda-gpus
 # https://github.com/onnx/onnx-tensorrt
 
-RUN	git clone --recursive https://github.com/onnx/onnx-tensorrt.git &&\
+RUN	git clone --recursive -b 6.0 https://github.com/onnx/onnx-tensorrt.git &&\
 	cd onnx-tensorrt &&\
 	mkdir build  &&\
 	cd build &&\
