@@ -49,6 +49,8 @@ RUN apt-get -qq update && apt-get -qq install -y --no-install-recommends \
 	libprotoc-dev \
 	swig\
 	qt5-default \
+	libboost-all-dev \
+	libboost-dev \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN cd /usr/local/bin &&\
@@ -70,11 +72,11 @@ RUN pip3 install --upgrade pip
 #---------------Install opencv----------------------
 
 WORKDIR /
-ENV OPENCV_VERSION="4.1.0"
+ENV OPENCV_VERSION="4.1.1"
 RUN wget -O opencv.zip  https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip 
-RUN wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/${OPENCV_VERSION}.zip 
+# RUN wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/${OPENCV_VERSION}.zip 
 RUN unzip opencv.zip 
-RUN unzip opencv_contrib.zip 
+# RUN unzip opencv_contrib.zip 
 RUN mkdir /opencv-${OPENCV_VERSION}/cmake_binary 
 WORKDIR /opencv-${OPENCV_VERSION}/cmake_binary 
 
@@ -101,16 +103,20 @@ RUN cmake -DBUILD_TIFF=ON \
 	-DINSTALL_PYTHON_EXAMPLES=ON \
 	-DINSTALL_C_EXAMPLES=OFF \
 	-DOPENCV_ENABLE_NONFREE=ON \
-	-DOPENCV_EXTRA_MODULES_PATH=/opencv_contrib-${OPENCV_VERSION}/modules \
+	# -DOPENCV_EXTRA_MODULES_PATH=/opencv_contrib-${OPENCV_VERSION}/modules \
 	-DBUILD_EXAMPLES=ON \
 	-D CUDA_TOOLKIT_ROOT_DIR= /usr/local/cuda-10.1 \
 	-DWITH_QT=ON ..
 
-RUN make install \
-	&& rm opencv.zip \
-	&& rm opencv_contrib.zip \
-	&& rm -r /opencv-${OPENCV_VERSION} \
-	&& rm -r /opencv_contrib-${OPENCV_VERSION}
+RUN chmod +x download_with_curl.sh \
+	&& sh ./download_with_curl.sh
+
+RUN make -j8 \
+	&& make install \
+	&& rm /opencv.zip \
+	# && rm opencv_contrib.zip \
+	&& rm -rf /opencv-${OPENCV_VERSION} 
+# && rm -rf /opencv_contrib-${OPENCV_VERSION}
 
 RUN  ln -s \
 	/usr/lib/python3.6/dist-packages/cv2/python-3.6/cv2.cpython-36m-x86_64-linux-gnu.so \
@@ -138,18 +144,18 @@ RUN pip3 install keras
 # determine DGPU_ARCHS from https://developer.nvidia.com/cuda-gpus
 # https://github.com/onnx/onnx-tensorrt
 
-RUN	git clone --recursive https://github.com/onnx/onnx-tensorrt.git &&\
-	cd onnx-tensorrt &&\
-	mkdir build  &&\
-	cd build &&\
-	cmake .. -DCUDA_INCLUDE_DIRS=/usr/local/cuda/include -DTENSORRT_ROOT=/usr/src/tensorrt -DGPU_ARCHS="61" &&\
-	make -j8 &&\
-	make install &&\
-	ldconfig && \
-	cd .. && \
-	python setup.py build &&\
-	python setup.py install &&\
-	rm -rf ./build/
+# RUN	git clone --recursive https://github.com/onnx/onnx-tensorrt.git &&\
+# 	cd onnx-tensorrt &&\
+# 	mkdir build  &&\
+# 	cd build &&\
+# 	cmake .. -DCUDA_INCLUDE_DIRS=/usr/local/cuda/include -DTENSORRT_ROOT=/usr/src/tensorrt -DGPU_ARCHS="61" &&\
+# 	make -j8 &&\
+# 	make install &&\
+# 	ldconfig && \
+# 	cd .. && \
+# 	python setup.py build &&\
+# 	python setup.py install &&\
+# 	rm -rf ./build/
 
 #----------------Install TensorBoardX -----------------------
 RUN git clone https://github.com/lanpa/tensorboardX && cd tensorboardX && python setup.py install
