@@ -102,6 +102,7 @@ RUN cmake -DBUILD_TIFF=ON \
 	-DINSTALL_PYTHON_EXAMPLES=ON \
 	-DINSTALL_C_EXAMPLES=OFF \
 	-DOPENCV_ENABLE_NONFREE=ON \
+	-DOPENCV_GENERATE_PKGCONFIG=ON \
 	# -DOPENCV_EXTRA_MODULES_PATH=/opencv_contrib-${OPENCV_VERSION}/modules \
 	-DBUILD_EXAMPLES=ON \
 	-D CUDA_TOOLKIT_ROOT_DIR= /usr/local/cuda-10.1 \
@@ -120,36 +121,6 @@ RUN make -j8 \
 RUN  ln -s \
 	/usr/lib/python3.6/dist-packages/cv2/python-3.6/cv2.cpython-36m-x86_64-linux-gnu.so \
 	/usr/local/lib/python3.6/dist-packages/cv2.so
-
-# WORKDIR /
-# ENV OPENCV_VERSION="4.1.0"
-# RUN wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
-# 	&& unzip ${OPENCV_VERSION}.zip \
-# 	&& mkdir /opencv-${OPENCV_VERSION}/cmake_binary \
-# 	&& cd /opencv-${OPENCV_VERSION}/cmake_binary \
-# 	&& cmake -DBUILD_TIFF=ON \
-# 	-DBUILD_opencv_java=OFF \
-# 	-DWITH_CUDA=OFF \
-# 	-DWITH_OPENGL=ON \
-# 	-DWITH_OPENCL=ON \
-# 	-DWITH_IPP=ON \
-# 	-DWITH_TBB=ON \
-# 	-DWITH_EIGEN=ON \
-# 	-DWITH_V4L=ON \
-# 	-DBUILD_TESTS=OFF \
-# 	-DBUILD_PERF_TESTS=OFF \
-# 	-DCMAKE_BUILD_TYPE=RELEASE \
-# 	-DCMAKE_INSTALL_PREFIX=$(python3.6 -c "import sys; print(sys.prefix)") \
-# 	-DPYTHON_EXECUTABLE=$(which python3.6) \
-# 	-DPYTHON_INCLUDE_DIR=$(python3.6 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
-# 	-DPYTHON_PACKAGES_PATH=$(python3.6 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") \
-# 	.. \
-# 	&& make install \
-# 	&& rm /${OPENCV_VERSION}.zip \
-# 	&& rm -r /opencv-${OPENCV_VERSION}
-# RUN  ln -s \
-# 	/usr/lib/python3.6/dist-packages/cv2/python-3.6/cv2.cpython-36m-x86_64-linux-gnu.so \
-# 	/usr/local/lib/python3.6/dist-packages/cv2.so
 
 
 ####################################################

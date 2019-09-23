@@ -49,7 +49,7 @@ AI-lab is meant to be used to building, training, validating, testing your deep 
 ## 1.2. Pre-requisites
 
 * An operating system with AMD64 architecture (`dpkg --print-architecture`), e,g, 64-bit Linux OS (check with `lsb_release -a`)
-  
+
 *  NVIDIA drivers and [CUDA toolkit](https://developer.nvidia.com/cuda-downloads): (check with `nvidia-smi`)
 
 * Docker-ce: Install or reinstall docker-ce, please follow the original docker-ce [installation guide](https://docs.docker.com/install/linux/docker-ce/ubuntu/), including the [post-installation](https://docs.docker.com/install/linux/linux-postinstall/) steps for Linux
@@ -66,11 +66,11 @@ docker pull aminehy/ai-lab
 ```
 
 **Run the AI-lab and start your development**
- 
+
 ``` bash
 xhost +
-docker run -it --rm 
---runtime=nvidia 
+docker run -it --rm
+--runtime=nvidia
 -v $(pwd):/workspace \
 -w /workspace \
 -v /tmp/.X11-unix:/tmp/.X11-unix \
