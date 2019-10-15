@@ -51,6 +51,7 @@ RUN apt-get -qq update && apt-get -qq install -y --no-install-recommends \
 	qt5-default \
 	libboost-all-dev \
 	libboost-dev \
+	xdg-utils \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN cd /usr/local/bin &&\
@@ -163,6 +164,9 @@ RUN git clone https://github.com/lanpa/tensorboardX && cd tensorboardX && python
 #---------------Install python requirements---------
 COPY requirements.txt /tmp/
 RUN pip3 install --requirement /tmp/requirements.txt
+
+RUN echo 'export LC_ALL=C.UTF-8' >> ~/.bashrc
+RUN echo 'export LANG=C.UTF-8' >> ~/.bashrc
 
 
 #----------------Perform some cleaning-----------------------
