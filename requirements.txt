@@ -1,9 +1,9 @@
 # Python packages
 numpy
-matplotlib
-mahotas
-scikit-learn
-scikit-image
+matplotlib 
+mahotas 
+scikit-learn 
+scikit-image 
 scipy
 pycuda==2018.1.1
 Pillow==6.0.0
@@ -19,16 +19,14 @@ requests
 argparse
 wget>=3.2
 moviepy
-pyyaml
-wheel
+pyyaml 
+wheel 
 ipython==5.0
 autopep8
 gpustat # watch -n0.5 -c gpustat --c -cupP
-youtube-dl
-pafy
-
+streamlit
 
 # Converters
 tf2onnx
-keras2onnx
+keras2onnx 
 skl2onnx
