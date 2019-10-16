@@ -52,6 +52,8 @@ RUN apt-get -qq update && apt-get -qq install -y --no-install-recommends \
 	libboost-all-dev \
 	libboost-dev \
 	xdg-utils \
+	snapd \
+	rsync \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN cd /usr/local/bin &&\
@@ -73,12 +75,12 @@ RUN pip3 install --upgrade pip
 #---------------Install opencv----------------------
 WORKDIR /
 ENV OPENCV_VERSION="4.1.1"
-RUN wget -O opencv.zip  https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip 
-# RUN wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/${OPENCV_VERSION}.zip 
-RUN unzip opencv.zip 
-# RUN unzip opencv_contrib.zip 
-RUN mkdir /opencv-${OPENCV_VERSION}/cmake_binary 
-WORKDIR /opencv-${OPENCV_VERSION}/cmake_binary 
+RUN wget -O opencv.zip  https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip
+# RUN wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/${OPENCV_VERSION}.zip
+RUN unzip opencv.zip
+# RUN unzip opencv_contrib.zip
+RUN mkdir /opencv-${OPENCV_VERSION}/cmake_binary
+WORKDIR /opencv-${OPENCV_VERSION}/cmake_binary
 
 RUN cmake -DBUILD_TIFF=ON \
 	-DBUILD_opencv_java=OFF \
@@ -116,7 +118,7 @@ RUN make -j8 \
 	&& make install \
 	&& rm /opencv.zip \
 	# && rm opencv_contrib.zip \
-	&& rm -rf /opencv-${OPENCV_VERSION} 
+	&& rm -rf /opencv-${OPENCV_VERSION}
 	# && rm -rf /opencv_contrib-${OPENCV_VERSION}
 
 RUN  ln -s \
@@ -164,6 +166,8 @@ RUN git clone https://github.com/lanpa/tensorboardX && cd tensorboardX && python
 #---------------Install python requirements---------
 COPY requirements.txt /tmp/
 RUN pip3 install --requirement /tmp/requirements.txt
+
+#---------------Add some envirenement variable-----------
 
 RUN echo 'export LC_ALL=C.UTF-8' >> ~/.bashrc
 RUN echo 'export LANG=C.UTF-8' >> ~/.bashrc

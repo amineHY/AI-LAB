@@ -52,6 +52,8 @@ RUN apt-get -qq update && apt-get -qq install -y --no-install-recommends \
 	libboost-all-dev \
 	libboost-dev \
 	xdg-utils \
+	snapd \
+	rsync \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN cd /usr/local/bin &&\
