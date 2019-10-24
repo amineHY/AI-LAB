@@ -12,6 +12,8 @@ pylint
 imutils
 h5py
 visdom
+pafy 
+youtube-dl
 
 # Additional packages
 jupyter
