@@ -6,7 +6,7 @@ scikit-learn
 scikit-image 
 scipy
 pycuda==2018.1.1
-Pillow==6.0.0
+Pillow>6.2.0
 pandas
 pylint
 imutils
