@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/tensorrt:19.09-py3
+FROM nvcr.io/nvidia/tensorrt:19.10-py3
 LABEL maintainer "M. Amine Hadj-Youcef  <hadjyoucef.amine@gmail.com>"
 
 # If you have any comment : LinkedIn - https://www.linkedin.com/in/aminehy/
@@ -75,12 +75,12 @@ RUN pip3 install --upgrade pip
 #---------------Install opencv----------------------
 WORKDIR /
 ENV OPENCV_VERSION="4.1.1"
-RUN wget -O opencv.zip  https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip 
-# RUN wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/${OPENCV_VERSION}.zip 
-RUN unzip opencv.zip 
-# RUN unzip opencv_contrib.zip 
-RUN mkdir /opencv-${OPENCV_VERSION}/cmake_binary 
-WORKDIR /opencv-${OPENCV_VERSION}/cmake_binary 
+RUN wget -O opencv.zip  https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip
+# RUN wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/${OPENCV_VERSION}.zip
+RUN unzip opencv.zip
+# RUN unzip opencv_contrib.zip
+RUN mkdir /opencv-${OPENCV_VERSION}/cmake_binary
+WORKDIR /opencv-${OPENCV_VERSION}/cmake_binary
 
 RUN cmake -DBUILD_TIFF=ON \
 	-DBUILD_opencv_java=OFF \
@@ -118,7 +118,7 @@ RUN make -j8 \
 	&& make install \
 	&& rm /opencv.zip \
 	# && rm opencv_contrib.zip \
-	&& rm -rf /opencv-${OPENCV_VERSION} 
+	&& rm -rf /opencv-${OPENCV_VERSION}
 	# && rm -rf /opencv_contrib-${OPENCV_VERSION}
 
 RUN  ln -s \

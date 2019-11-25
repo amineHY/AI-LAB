@@ -3,18 +3,7 @@
 
 ![All in one solution for data science](AI-lab_logos.png)
 
-<!-- TOC -->
-
-- [1. AI-lab: The Ideal Tool for Data Scientists to Develop and Export Machine Learning Models](#1-ai-lab-the-ideal-tool-for-data-scientists-to-develop-and-export-machine-learning-models)
-  - [1.1. Description](#11-description)
-  - [1.2. Pre-requisites](#12-pre-requisites)
-  - [1.3. USAGE](#13-usage)
-  - [1.4. Launch an IDE and Start Developing](#14-launch-an-ide-and-start-developing)
-    - [1.4.1. Jupyter notebook](#141-jupyter-notebook)
-    - [1.4.2. VS Code](#142-vs-code)
-  - [Do you have any suggestions ?](#do-you-have-any-suggestions-)
-
-<!-- /TOC -->
+<!-- TOC -->autoauto- [1. AI-lab: The Ideal Tool for Data Scientists to Develop and Export Machine Learning Models](#1-ai-lab-the-ideal-tool-for-data-scientists-to-develop-and-export-machine-learning-models)auto    - [1.1. Description](#11-description)auto    - [1.2. Pre-requisites](#12-pre-requisites)auto    - [1.3. USAGE](#13-usage)auto    - [1.4. Launch an IDE and Start Developing](#14-launch-an-ide-and-start-developing)auto        - [1.4.1. Jupyter notebook](#141-jupyter-notebook)auto        - [1.4.2. VS Code](#142-vs-code)autoauto<!-- /TOC -->
 ## 1.1. Description
 
 This project is reserved for creating a new development environment using docker for developing AI models in data science, in particular, computer vision.
@@ -105,7 +94,7 @@ jupyter notebook --allow-root --port=8888 --ip=0.0.0.0 --no-browser
 
 [VS Code](https://code.visualstudio.com/) offers the possibility to develop from inside docker container (thus, inside AI-lab), through the extension [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack). Read more in details [here](https://code.visualstudio.com/docs/remote/containers).
 
-Two configuration folders `.devcontainer` and `.vscode` (inside `vscode_remote_dev`) are necessary to be able to use VS Code inside AI-lab. These two folders are hidden and must live in the directory of your application so that VS Code automatically detect AI-lab configuration. Therefore, you need to copy them inside your application folder.
+Two configuration folders `.devcontainer` and `.vscode` (inside `AI-LAB_in_vscode`) are necessary to be able to use VS Code inside AI-lab. These two folders are hidden and must live in the directory of your application so that VS Code automatically detect AI-lab configuration. Therefore, you need to copy them inside your application folder.
 
 To get these folders, first clone this repository and move to it
 
@@ -117,7 +106,7 @@ cd /AI-lab
 Copy the two folders to your application folder, for instance `/path_to_folder_application`
 
 ``` bash
-sudo cp -R AI-lab/vscode_remote_dev/.* /path_to_folder_application
+sudo cp -R AI-lab/AI-LAB_in_vscode/.* /path_to_folder_application
 ```
 
 Finally, move to your application folder and launch VS Code
