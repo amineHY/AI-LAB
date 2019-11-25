@@ -31,7 +31,7 @@
 		"-v", 		"/etc/localtime:/etc/localtime",
 		"-v", 		"/etc/timezone:/etc/timezone",
 		"-v", 		"/var/run/docker.sock:/var/run/docker.sock",
-		"-v", 		"/media/:/media"
+		"-v", 		"/media/:/media",
 		"--device", 		"/dev/video0",
 		"--ipc", 		"host",
 		"-e", 		"XAUTHORITY=/tmp/.docker.xauth",
