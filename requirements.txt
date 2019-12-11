@@ -24,10 +24,11 @@ wget>=3.2
 moviepy
 pyyaml
 wheel
-ipython>=5.0
+ipython==5.0
 autopep8
 gpustat # watch -n0.5 -c gpustat --c -cupP
 streamlit>=0.48.0
+rope
 
 # Converters
 tf2onnx

@@ -34,7 +34,7 @@
 		"-v", 		"/media/:/media",
 		"--device", 		"/dev/video0",
 		"--ipc", 		"host",
-		"-e", 		"XAUTHORITY=/tmp/.docker.xauth",
+		"-e", 		"XAUTHORITY=/tmp/.docker.xauth"
 	],
 
 	// Uncomment the next line if you want to publish any ports.
