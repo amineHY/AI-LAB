@@ -4,6 +4,7 @@
 ![All in one solution for data science](AI-lab_logos.png)
 
 <!-- TOC -->autoauto- [1. AI-lab: The Ideal Tool for Data Scientists to Develop and Export Machine Learning Models](#1-ai-lab-the-ideal-tool-for-data-scientists-to-develop-and-export-machine-learning-models)auto    - [1.1. Description](#11-description)auto    - [1.2. Pre-requisites](#12-pre-requisites)auto    - [1.3. USAGE](#13-usage)auto    - [1.4. Launch an IDE and Start Developing](#14-launch-an-ide-and-start-developing)auto        - [1.4.1. Jupyter notebook](#141-jupyter-notebook)auto        - [1.4.2. VS Code](#142-vs-code)autoauto<!-- /TOC -->
+
 ## 1.1. Description
 
 This project is reserved for creating a new development environment using docker for developing AI models in data science, in particular, computer vision.

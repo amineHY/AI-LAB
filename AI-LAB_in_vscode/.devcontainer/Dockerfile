@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/tensorrt:19.10-py3
+FROM nvcr.io/nvidia/tensorrt:19.11-py3
 LABEL maintainer "M. Amine Hadj-Youcef  <hadjyoucef.amine@gmail.com>"
 
 # If you have any comment : LinkedIn - https://www.linkedin.com/in/aminehy/
@@ -119,7 +119,7 @@ RUN make -j8 \
 	&& rm /opencv.zip \
 	# && rm opencv_contrib.zip \
 	&& rm -rf /opencv-${OPENCV_VERSION}
-	# && rm -rf /opencv_contrib-${OPENCV_VERSION}
+# && rm -rf /opencv_contrib-${OPENCV_VERSION}
 
 RUN  ln -s \
 	/usr/lib/python3.6/dist-packages/cv2/python-3.6/cv2.cpython-36m-x86_64-linux-gnu.so \
@@ -151,7 +151,7 @@ RUN	git clone --recursive -b 6.0 https://github.com/onnx/onnx-tensorrt.git &&\
 	cd onnx-tensorrt &&\
 	mkdir build  &&\
 	cd build &&\
-	cmake .. -DCUDA_INCLUDE_DIRS=/usr/local/cuda/include -DTENSORRT_ROOT=/usr/src/tensorrt -DGPU_ARCHS="61" &&\
+	cmake .. -DCUDA_INCLUDE_DIRS=/usr/local/cuda/include -DTENSORRT_ROOT=/usr/src/tensorrt -DGPU_ARCHS="35" &&\
 	make -j8 &&\
 	make install &&\
 	ldconfig && \
@@ -167,6 +167,25 @@ RUN git clone https://github.com/lanpa/tensorboardX && cd tensorboardX && python
 COPY requirements.txt /tmp/
 RUN pip3 install --requirement /tmp/requirements.txt
 
+# ---------------Install Heroku for deplyment of application on the server
+RUN curl https://cli-assets.heroku.com/install.sh | sh
+
+# ---------------Configure Streamlit
+RUN mkdir -p /root/.streamlit
+
+RUN bash -c 'echo -e "\
+[general]\n\
+email = \"hadjyoucef.amine@gmail.com\"\n\
+" > /root/.streamlit/credentials.toml'
+
+RUN bash -c 'echo -e "\
+[server]\n\
+enableCORS = false\n\
+" > /root/.streamlit/config.toml'
+
+EXPOSE 8501
+
+# Declare environnement variable
 RUN echo 'export LC_ALL=C.UTF-8' >> ~/.bashrc
 RUN echo 'export LANG=C.UTF-8' >> ~/.bashrc
 
