@@ -154,7 +154,7 @@ in the terminal, run `deviceQuery` script (provided in this repository) to get m
 ./deviceQuery
 ```
 Output for my OS:
-![](media/device_query.png)
+![device_query](media/device_query.png)
 
 
 ## Do you have any suggestions, anything to report or want to improve AI-lab?
