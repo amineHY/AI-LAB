@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/tensorrt:19.11-py3
+FROM nvcr.io/nvidia/tensorrt:19.12-py3
 LABEL maintainer "M. Amine Hadj-Youcef  <hadjyoucef.amine@gmail.com>"
 
 # If you have any comment : LinkedIn - https://www.linkedin.com/in/aminehy/
