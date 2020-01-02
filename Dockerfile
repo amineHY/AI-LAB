@@ -1,4 +1,6 @@
-FROM nvcr.io/nvidia/tensorrt:19.12-py3
+
+FROM nvcr.io/nvidia/tensorrt:19.10-py3
+
 LABEL maintainer "M. Amine Hadj-Youcef  <hadjyoucef.amine@gmail.com>"
 
 # If you have any comment : LinkedIn - https://www.linkedin.com/in/aminehy/
@@ -174,14 +176,14 @@ RUN curl https://cli-assets.heroku.com/install.sh | sh
 RUN mkdir -p /root/.streamlit
 
 RUN bash -c 'echo -e "\
-[general]\n\
-email = \"hadjyoucef.amine@gmail.com\"\n\
-" > /root/.streamlit/credentials.toml'
+	[general]\n\
+	email = \"hadjyoucef.amine@gmail.com\"\n\
+	" > /root/.streamlit/credentials.toml'
 
 RUN bash -c 'echo -e "\
-[server]\n\
-enableCORS = false\n\
-" > /root/.streamlit/config.toml'
+	[server]\n\
+	enableCORS = false\n\
+	" > /root/.streamlit/config.toml'
 
 EXPOSE 8501
 
