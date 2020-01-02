@@ -37,7 +37,7 @@ I hand-crafted `AI-lab` (on top of [NVIDIA Container](https://ngc.nvidia.com/cat
 - Most common AI framework:
   - TensorFlow, PyTorch, ONNX, Keras, ONNX-TensorRT, Jupyter-lab, VS Code integration with remote development, Numpy, Matplotlib, Scikit-learn, Scipy, Pandas,  TensorRT and more.
 
-## 1.2. Installation
+## 1.2. Install AI-lab
 
 Some pre-requisites need to be installed on the OS before using `AI-lab`
 
@@ -73,14 +73,14 @@ The latest image have around 9.97GB, so make sure you have enough space (and hig
 
 ``` bash
 xhost +
-docker run -it --rm
---runtime=nvidia
--v $(pwd):/workspace \
--w /workspace \
--v /tmp/.X11-unix:/tmp/.X11-unix \
--e DISPLAY=$DISPLAY \
--p 8888:8888 -p 6006:6006 aminehy/ai-lab:latest
 ```
+then
+```
+docker run -it --rm -v $(pwd):/workspace -w /workspace -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY --runtime=nvidia -p 8888:8888 -p 6006:6006 aminehy/ai-lab
+```
+
+Done!
+
 
 **Install UFF converter  `convert-to-uff` (if you need it)**
 
