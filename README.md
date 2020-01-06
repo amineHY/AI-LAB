@@ -1,3 +1,8 @@
+![GitHub stars](https://img.shields.io/github/stars/aminehy/ai-lab?style=social)
+![Docker Pulls](https://img.shields.io/docker/pulls/aminehy/ai-lab)
+![Docker Automated build](https://img.shields.io/docker/automated/aminehy/ai-lab)
+![Docker Stars](https://img.shields.io/docker/stars/aminehy/ai-lab)
+
 # AI-lab: The Ideal Tool for Data Scientists to Develop and Export Machine Learning Models
 
 ![All in one solution for data science](media/AI-lab_logos.png)
