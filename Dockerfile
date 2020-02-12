@@ -103,7 +103,7 @@ RUN cmake -D CMAKE_BUILD_TYPE=RELEASE\
 	-D CUDA_FAST_MATH=1\
 	-D CUDA_ARCH_BIN=5.3,6.0,6.1,7.0,7.5\
 	-D WITH_CUBLAS=1\
-	-D OPENCV_EXTRA_MODULES_PATH=/opencv_contrib/modules\
+	-D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules opencv/cmake_binary \
 	-D HAVE_opencv_python3=ON\
 	-D PYTHON_EXECUTABLE=$(which python3.6) \
 	-D BUILD_EXAMPLES=ON \
@@ -143,8 +143,8 @@ RUN cmake -D CMAKE_BUILD_TYPE=RELEASE\
 # 	-D CUDA_TOOLKIT_ROOT_DIR= /usr/local/cuda-10.1 \
 # 	-DWITH_QT=ON ..
 
-# RUN chmod +x download_with_curl.sh \
-#  	&& sh ./download_with_curl.sh
+RUN chmod +x download_with_curl.sh \
+ 	&& sh ./download_with_curl.sh
 
 # Compile OpenCV with “dnn” GPU support
 RUN make -j8 \
