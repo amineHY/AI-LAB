@@ -1,0 +1,14 @@
+version: 2
+updates:
+- package-ecosystem: docker
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: nvidia/tensorrt
+    versions:
+    - 20.12.pre.py3
+    - 21.02.pre.py3
+    - 21.03.pre.py3
