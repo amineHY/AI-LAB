@@ -24,7 +24,7 @@ wget>=3.2
 moviepy
 pyyaml
 wheel
-ipython==5.0
+ipython==7.16.3
 autopep8
 gpustat # watch -n0.5 -c gpustat --c -cupP
 streamlit>=0.48.0
